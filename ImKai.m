@@ -1,0 +1,13 @@
+function output=ImKai(Q,WW,mutilde)
+
+% Note that this is dimensionless Im(polarizability).
+
+W=abs(WW);
+
+output= 1./pi .* sign(WW).*( ...
+    Theta(Q-W) .* Q.^2./(2.*sqrt(Q.^2-W.^2)).*...
+    ( (Gplus(Q,W,1,mutilde)+Gplus(Q,W,-1,mutilde)) - (Gminus(Q,W,1,mutilde)+Gminus(Q,W,-1,mutilde)) ) + ...
+    Theta(W-Q) .* Q.^2 ./ (2.*sqrt(W.^2-Q.^2)) .* (-pi./2 + Hplus(Q,W,1,mutilde)+Hplus(Q,W,-1,mutilde) ) ...
+                  );
+
+end
